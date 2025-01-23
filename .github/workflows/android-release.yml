@@ -1,6 +1,7 @@
 name: Android Release
 
 on:
+  workflow_dispatch:
   push:
     branches: [master]
   pull_request:
@@ -12,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Java to compile Android project
         uses: actions/setup-java@v1
@@ -49,7 +50,7 @@ jobs:
           fileForms: '{"file":"build/app/outputs/apk/release/app-release.apk"}'
 
       - name: Publish Android Artefacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: release-aab
           path: build/app/outputs/apk/release/app-release.apk
