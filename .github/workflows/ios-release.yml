@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install the Apple certificate and provisioning profile
         env:
@@ -74,7 +74,7 @@ jobs:
         run: xcodebuild -exportArchive -archivePath build-output/app.xcarchive -exportPath build-output/ios -exportOptionsPlist ios/ExportOptions.plist
 
       - name: Publish iOS Artefacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: release-ios
           path: build-output/ios
